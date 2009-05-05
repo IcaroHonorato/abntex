@@ -1,0 +1,13 @@
+open upload.codigolivre.org.br
+user anonymous ge@linux
+cd incoming
+passive
+put ../abntex-0.9-beta.tar.gz abntex-0.9-beta.tar.gz
+put ../abntex-doc-0.9-beta.tar.gz abntex-doc-0.9-beta.tar.gz
+put ../abntex-0.9-beta.zip abntex-0.9-beta.zip
+put ../abntex-doc-0.9-beta.zip abntex-doc-0.9-beta.zip
+put /usr/src/packages/SRPMS/abntex-0.9-beta.src.rpm abntex-0.9-beta.src.rpm
+put /usr/src/packages/RPMS/noarch/abntex-0.9-beta.noarch.rpm abntex-0.9-beta.noarch.rpm
+put /usr/src/packages/RPMS/noarch/abntex-doc-0.9-beta.noarch.rpm abntex-doc-0.9-beta.noarch.rpm
+put /usr/src/packages/RPMS/noarch/abntex-lyx-0.9-beta.noarch.rpm abntex-lyx-0.9-beta.noarch.rpm
+quit
