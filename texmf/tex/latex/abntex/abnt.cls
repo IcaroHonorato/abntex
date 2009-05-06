@@ -1,4 +1,4 @@
-%$Id: abnt.cls,v 1.31 2005/12/21 12:50:36 gweber Exp $
+%$Id: abnt.cls,v 1.32 2006/09/09 22:41:03 gweber Exp $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % ABNT.CLS
@@ -31,7 +31,7 @@
 %
 \NeedsTeXFormat{LaTeX2e}%
 \input{cvs-id.def}
-\CVSExtract$Id: abnt.cls,v 1.31 2005/12/21 12:50:36 gweber Exp $
+\CVSExtract$Id: abnt.cls,v 1.32 2006/09/09 22:41:03 gweber Exp $
 \CVSClass{abnt}{\space Classe abnt (NBR6024, NBR6027, NBR6028, NBR14724)} %substitui \ProvidesPackage (replaces \ProvidesPackage)
 
 %%%%%%   Required packages for the implementation of this class  %%%%%%
@@ -155,7 +155,7 @@
 %% font option: times as default or not
 \newboolean{ABNTtimesfont}
 \DeclareOption{font=times}   {\setboolean{ABNTtimesfont}{true}}
-\DeclareOption{fonat=plain} {\setboolean{ABNTtimesfont}{false}}
+\DeclareOption{font=plain}   {\setboolean{ABNTtimesfont}{false}}
 %
 \DeclareOption{times}   {\ExecuteOptions{font=times}}
 \DeclareOption{notimes} {\ExecuteOptions{font=plain}}

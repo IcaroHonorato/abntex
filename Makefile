@@ -1,8 +1,8 @@
-#$Header: /home/cvsroot/abntex/Makefile,v 1.35 2005/12/21 17:27:23 gweber Exp $
+#$Header: /home/cvsroot/abntex/Makefile,v 1.36 2006/09/10 00:25:16 gweber Exp $
 #
 #expande a versão deste pacote
 export VERSION=0.9
-export RELEASE=beta
+export RELEASE=beta2
 
 #altere a linha abaixo se o seu tetex não puder se detetado
 #pelo comando kpsewich, na dúvida faça um "make test"

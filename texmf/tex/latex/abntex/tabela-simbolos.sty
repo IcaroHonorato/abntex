@@ -1,6 +1,6 @@
-%% $Id: tabela-simbolos.sty,v 1.11 2005/12/21 14:21:43 gweber Exp $
+%% $Id: tabela-simbolos.sty,v 1.12 2006/09/09 23:18:26 gweber Exp $
 %% name of this file tabela-simbolos.sty
-%% Copyright 2003-2005 by the abnTeX group at http://abntex.codigolivre.org.br
+%% Copyright 2003-2006 by the abnTeX group at http://abntex.codigolivre.org.br
 %%
 %% Maintainer: Gerald Weber <gweber@codigolivre.org.br>
 %%
@@ -12,7 +12,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \input{cvs-id.def}
-\CVSExtract$Id: tabela-simbolos.sty,v 1.11 2005/12/21 14:21:43 gweber Exp $
+\CVSExtract$Id: tabela-simbolos.sty,v 1.12 2006/09/09 23:18:26 gweber Exp $
 \CVSPackage{tabelasimbolos}{\space Tabela de simbolos e siglas}
 
 \RequirePackage{index}[2004/01/20]
@@ -131,9 +131,12 @@
 \def\Miscelan{symbols}}
 
 
-
+% Auxiliary counter which helps maintaining and indexing by occurence, rather
+% than by some sorting criterium. The counter is added to the indexentry which is then
+% followed by an @. See latex documentation on indexentry, 
+% e.g. "The LaTeX Companion", Mittelbach & Goossens, 2nd Ed., p.874.
 \newcounter{Ocorrencia}
-\setcounter{Ocorrencia}{0}
+\setcounter{Ocorrencia}{1000}
 
 \ifthenelse{\boolean{AlphaSort}}{\def\TheOcor{}}{\def\TheOcor{\arabic{Ocorrencia}\space}}
 \def\@wrindex#1#2{%
@@ -211,7 +214,7 @@
 \@ifpackageloaded{supertabular}{%
 \renewcommand{\Babrevtable}{\begin{center}\begin{supertabular}{\abrevcolumns}}
 \renewcommand{\Eabrevtable}{\end{supertabular}\end{center}}
-\renewcommand{\Bsymboltable}{\begin{center}\begin{supertabular}{\abrevcolumns}}
+\renewcommand{\Bsymboltable}{\begin{center}\begin{supertabular}{\symbolcolumns}}
 \renewcommand{\Esymboltable}{\end{supertabular}\end{center}}
 \PackageWarning{tabel-simbolos}{package supertabular detected, redefining table commands}
 }{\relax}

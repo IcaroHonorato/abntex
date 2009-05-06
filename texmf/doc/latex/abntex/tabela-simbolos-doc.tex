@@ -1,5 +1,5 @@
-%% $Id: tabela-simbolos-doc.tex,v 1.8 2005/11/08 21:40:09 gweber Exp $
-%% Copyright 2003-2005 by the abnTeX group at http://codigolivre.org.br/projects/abntex
+%% $Id: tabela-simbolos-doc.tex,v 1.10 2006/09/09 23:42:09 gweber Exp $
+%% Copyright 2003-2006 by the abnTeX group at http://codigolivre.org.br/projects/abntex
 %%
 %% Mantainer: Gerald Weber <gweber@codigolivre.org.br>
 %%
@@ -22,12 +22,11 @@
 \usepackage[brazil]{babel}
 \usepackage{tabela-simbolos}
 \usepackage{supertabular}
-\usepackage{html}
 \usepackage[num]{abntcite}
 \def\Versao$#1 #2${#2}
 \def\Data$#1 #2 #3${#2}
-\def\DataCVS{\Data$Date: 2005/11/08 21:40:09 $}
-\def\VersaoCVS{\Versao$Revision: 1.8 $}
+\def\DataCVS{\Data$Date: 2006/09/09 23:42:09 $}
+\def\VersaoCVS{\Versao$Revision: 1.10 $}
 \begin{document}
 
 
@@ -295,6 +294,11 @@ onde {\tt xxxxxtabular} é o novo ambiente de tabela.
 Este estilo exige que se use {\tt hyperindex=false}, assim tanto
 o pacote hyperref como pdflatex funcionam corretamente.
 
+\subsection{Limitação no número de símbolos}
+
+Quando se usa a ordenação por ocorrências, o número de símbolos e siglas está limitado
+a 8999, o que acreditamos deva ser suficiente para efeitos práticos. 
+Veja também o bug 200435 gentilmente relatado por Davi Kikuchi.
 
 \sigla{OMC}{Organização Mundial do Comércio}
 \simbolo{r}{raio}

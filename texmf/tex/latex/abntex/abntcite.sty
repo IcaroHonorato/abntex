@@ -1,6 +1,6 @@
-%% $Id: abntcite.sty,v 1.29 2005/11/14 09:05:40 gweber Exp $
+%% $Id: abntcite.sty,v 1.30 2006/04/25 15:57:42 gweber Exp $
 %% name of this file abntcite.sty
-%% Copyright 2001-2005 by the abnTeX group at http://abntex.codigolivre.org.br
+%% Copyright 2001-2006 by the abnTeX group at http://abntex.codigolivre.org.br
 %%
 %% This file is distributed under the LaTeX-Project Public License (LPPL)
 %%            http://www.latex-project.org/lppl.html
@@ -9,7 +9,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \input{cvs-id.def}
-\CVSExtract$Id: abntcite.sty,v 1.29 2005/11/14 09:05:40 gweber Exp $
+\CVSExtract$Id: abntcite.sty,v 1.30 2006/04/25 15:57:42 gweber Exp $
 \CVSPackage{abntcite}{\space Chamadas de referencias no texto (NBR10520, NBR10522)} %substitui \ProvidesPackage (replaces \ProvidesPackage)
 
 %Packages from standard LaTeX
@@ -129,8 +129,8 @@
 \DeclareOption{load-text}{\setboolean{ABCItextondemand}{false}}
 
 % biblabel-on-margin
-\DeclareOption{leftalign=yes}{\setboolean{ABCIbibjustif}{true}}
-\DeclareOption{leftalign=no}{\setboolean{ABCIbibjustif}{false}}
+\DeclareOption{rightalign=yes}{\setboolean{ABCIbibjustif}{true}}
+\DeclareOption{rightalign=no}{\setboolean{ABCIbibjustif}{false}}
 
 % biblabel-on-margin
 \DeclareOption{biblabel-on-margin}{\setboolean{ABCIbiblabelonmargin}{true}}
@@ -172,8 +172,8 @@
 %deprecated options, maintained for backward compatibility
 \DeclareOption{alf}{\ExecuteOptions{call=authordate,order=alphabetic}}
 \DeclareOption{num}{\ExecuteOptions{call=numeric,order=citation}}
-\DeclareOption{bibjustif}{\ExecuteOptions{leftalign=no}}
-\DeclareOption{bibleftalign}{\ExecuteOptions{leftalign=yes}}
+\DeclareOption{bibjustif}{\ExecuteOptions{rightalign=yes}}
+\DeclareOption{bibleftalign}{\ExecuteOptions{rightalign=yes}} %left/right mixed
 \DeclareOption{abnt-option-file}{\ExecuteOptions{optionfile=abnt-options.bib}}
 \DeclareOption{no-abnt-option-file}{\ExecuteOptions{optionfile=none}}
 \DeclareOption{overcite}{\ExecuteOptions{citepos=over}}
