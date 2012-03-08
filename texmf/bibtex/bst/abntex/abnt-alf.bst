@@ -548,83 +548,43 @@ abnt.last.names
 
 if$
 }
+
 FUNCTION {format.names}
-{ 'bibinfo :=  duplicate$ empty$ 'skip$
-  {'s :=
-   "" 't :=
-   #1 'nameptr :=  s num.names$ 'numnames :=
-    numnames 'namesleft :=
-    { namesleft #0 > }
-    { format.single.name
-      bibinfo bibinfo.check
-      't :=
-      nameptr #1 >
-        {nameptr #1 #1 + = numnames abnt.etal.list > and
-            {abnt.etal.list {"others" 't := #1 'namesleft :=} 'skip$ if$ }
-            'skip$
-          if$
-          namesleft #1 >
-            { "; " * t * }
-            { numnames #2 >
-                { "" * }
-                'skip$
-              if$
-              s nameptr "{ll}" format.name$ duplicate$ "others" =
-                { 't := }
-                { pop$ }
-              if$
-              t "others" =
-                { bbl.etal *}
-                { "; " * t *}
-              if$ }
-          if$ }
-        't
-      if$
-      nameptr #1 + 'nameptr :=
-      namesleft #1 - 'namesleft := }
-  while$
-  } if$
+{
+	'bibinfo :=
+	duplicate$
+	empty$ {
+		skip$
+	} {
+		's :=
+		"" 't :=
+		#1 'nameptr :=
+		s num.names$
+		'numnames :=
+		numnames 'namesleft :=
+		{ namesleft #0 > } {
+			format.single.name 
+			't :=
+			nameptr #1 > {
+ 				t "others" = {
+					bbl.etal *
+				} {
+					"; " * t *
+				} if$
+			} {
+				t
+			} if$
+			nameptr #1 + 'nameptr :=
+			namesleft #1 - 'namesleft :=
+		} while$
+	} if$
 }
 
-%from plain.bst
-FUNCTION {format.names.plain}
-{ 's :=
-  #1 'nameptr :=
-  s num.names$ 'numnames :=
-  numnames 'namesleft :=
-    { namesleft #0 > }
-    { s nameptr "{ff }{vv }{ll}{ jj}" format.name$ 't :=
-      nameptr #1 >
-	{ namesleft #1 >
-	    { ", " * t * }
-	    { numnames #20 >
-		{ "," * }
-		'skip$
-	      if$
-	      t "others" =
-		{ bbl.etal * }
-		{ bbl.and * t * }
-	      if$
-	    }
-	  if$
-	}
-	't
-      if$
-      nameptr #1 + 'nameptr :=
-      namesleft #1 - 'namesleft :=
-    }
-  while$
-}
 FUNCTION {format.names.ed} {format.names}
 
 FUNCTION {format.authors}
 {
-author "author" format.names
-}
-
-FUNCTION {format.authors.plain}
-{
-author format.names.plain
+	author "author" format.names
 }
 
 FUNCTION {get.bbl.editor} { editor num.names$ #1 > 'bbl.editors 'bbl.editor if$ }
@@ -1914,7 +1874,7 @@ FUNCTION {patent}
 { output.bibitem
   format.editor.or.organization new.sentence
   iso.year.label
-  format.authors.plain  output new.sentence
+  format.authors  output new.sentence
   format.btitle output new.sentence
   format.furtherresp new.sentence
   format.date output  new.block
