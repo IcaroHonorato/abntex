@@ -1264,64 +1264,113 @@ FUNCTION {format.journal}
 
 %generates the first label in \abntrefinfo to be used with \citeonline
 FUNCTION {format.names.for.label1} %abnt-alf only
-{ 's := "" 't :=
-   #1 'nameptr :=  s num.names$ 'numnames :=
-    numnames 'namesleft :=
-    { namesleft #0 > }
-    {abnt.last.names
-       {s nameptr "{ll}{ jj}" format.name$}
-       {s nameptr "{ll}" format.name$ #1 "{ll}" format.name$
-        s nameptr "{ jj}" format.name$ *}
-     if$
-     't :=
-      nameptr #1 >
-        {namesleft #1 >
-          { numnames abnt.etal.cite > abnt.etal.cite #0 = not and
-	    {#0 'namesleft := abnt.etal.cite {bbl.etal *} 'skip$ if$}
-	    {", " * t * } if$ }
-            { t "others" =
-              {abnt.etal.cite {bbl.etal *} 'skip$ if$}
-                {numnames nameptr =
-                {bbl.and * t *}
-		'skip$ if$}
-             if$
-	     }
-          if$ }
-        't
-      if$
-      nameptr #1 + 'nameptr :=
-      namesleft #1 - 'namesleft := }
-  while$
+{
+	's :=
+	"" 't :=
+	#1 'nameptr :=
+	s num.names$ 'numnames :=
+	numnames 'namesleft :=
+	{ namesleft #0 > } {
+		abnt.last.names {
+			s nameptr "{ll}{ jj}" format.name$
+		} {
+			s nameptr "{ll}" format.name$
+			#1 "{ll}" format.name$
+			s nameptr "{ jj}" format.name$ *
+		} if$
+		't :=
+		nameptr #1 > {
+			namesleft #1 > {
+				numnames abnt.etal.cite > {
+					#0 'namesleft :=
+					abnt.etal.cite {
+						bbl.etal *
+					} {
+						skip$
+					} if$
+				} {
+					", " * t *
+				} if$
+			} {
+				t "others" = {
+					abnt.etal.cite {
+						bbl.etal *
+					} {
+						skip$ 
+					} if$
+				} {
+					numnames nameptr = {
+						bbl.and * t *
+					} {
+						skip$
+					} if$
+				} if$
+			} if$
+		} {
+			t
+		} if$
+		nameptr #1 + 'nameptr :=
+		namesleft #1 - 'namesleft :=
+	} while$
 }
 
 %generates the second label in \abntrefinfo to be used with \cite
 FUNCTION {format.names.for.label2} %abnt-alf only
-{ 's := "" 't :=
-   #1 'nameptr :=  s num.names$ 'numnames :=
-    numnames 'namesleft :=
-    { namesleft #0 > }
-    {abnt.last.names
-       {s nameptr "{ll}{ jj}" format.name$}
-       {s nameptr "{ll}" format.name$ #1 "{ll}" format.name$
-        s nameptr "{ jj}" format.name$ *}
-     if$
-     abnt.cite.style #0 = {"u" change.case$} 'skip$ if$ 't :=
-      nameptr #1 >
-        {namesleft #1 >
-            { numnames abnt.etal.cite > 
-	      {#0 'namesleft := abnt.etal.cite {bbl.etal *} 'skip$ if$} 
-	      {"; " * t * } if$ }
-            { t "OTHERS" = t "others" = or
-	      {abnt.etal.cite {bbl.etal *} 'skip$ if$}
-	      {numnames nameptr = { bbl.semicolon * t *} 'skip$ if$}
-             if$
-	     }
-          if$ }
-        't
-      if$
-      nameptr #1 + 'nameptr :=
-      namesleft #1 - 'namesleft := }
-  while$
+{
+	's :=
+	"" 't :=
+	#1 'nameptr :=
+	s num.names$ 'numnames :=
+	numnames 'namesleft :=
+	{ namesleft #0 > } {
+		abnt.last.names {
+			s nameptr "{ll}{ jj}" format.name$
+		} {
+			s nameptr "{ll}" format.name$
+			#1 "{ll}" format.name$
+			s nameptr "{ jj}" format.name$ *
+		} if$
+		abnt.cite.style #0 = {
+			"u" change.case$
+		}{
+			skip$
+		} if$
+		't :=
+		nameptr #1 > {
+			namesleft #1 > {
+				numnames abnt.etal.cite > {
+					#0 'namesleft :=
+					abnt.etal.cite {
+						bbl.etal *
+					} {
+						skip$
+					} if$
+				} {
+					"; " * t *
+				} if$
+			} { 
+				t "OTHERS" =
+				t "others" =
+				or {
+					abnt.etal.cite {
+						bbl.etal *
+					} {
+						skip$
+					} if$
+				} {
+					numnames nameptr = {
+						bbl.semicolon * t *
+					} {
+						skip$
+					} if$
+				} if$
+			} if$
+		} {
+			t
+		} if$
+		nameptr #1 + 'nameptr :=
+		namesleft #1 - 'namesleft :=
+	} while$
 }
 
 FUNCTION {format.title.for.label}
