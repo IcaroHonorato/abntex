@@ -995,7 +995,8 @@ FUNCTION {format.date}
 	{ month empty$
 	{ bbl.missing.year }
 	{ "existe o campo month (mes) mas nao o campo year (ano) em " cite$ * warning$ month}
-	  if$}
+	
+  if$}
 	{ month empty$
 	{ year n.dashify}
 	{ month " " * year * }
